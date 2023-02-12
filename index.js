@@ -16,35 +16,24 @@ window.addEventListener('scroll', function () {
 	header.classList.toggle('sticky', window.scrollY > 50)
 })
 //
-
-async function getResponse() {
-	let response = await fetch('https://63cb6c96f36cbbdfc769b8aa.mockapi.io/key')
-	let content = await response.json()
-	content = content.splice(0, 12)
-
-	let list = document.querySelector('.box')
-	let key
-
-	for (key in content) {
-		list.innerHTML += `
-		<div class="box">
-						<div class="image">
-							<div class="img">
-								<img class="wrap" src="${content[key].avatar}" alt="" />
-							</div>
-							<div class="overlay">
-								<i class="far fa-search"></i>
-								<i class="far fa-user"></i>
-								<i class="far fa-heart"></i>
-							</div>
-						</div>
-						<div class="text">
-							<h4>${content[key].name}</h4>
-							<h4><span>$${content[key].number} </span> $${content[key].discount}</h4>
-							</div>
-						</div>
-					</div>`
-	}
-}
-
-getResponse()
+fetch('https://63cb6c96f36cbbdfc769b8aa.mockapi.io/key')
+	.then(response => response.json())
+	.then(data => {
+		// обработать данные
+		let output = ''
+		data.forEach(function (data) {
+			output += `
+        <div class="image">
+				<div class="img">
+					<img class="wrap" src="${data.avatar}" alt="" />
+				</div>
+			<div class="text">
+					<h4>${data.name}</h4>
+					<h4><span>$${data.number} </span> $${data.discount}</h4>
+			</div>
+		</div>
+      `
+		})
+		document.querySelector('.box').innerHTML = output
+	})
+	.catch(error => console.error(error))
