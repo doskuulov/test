@@ -26,7 +26,8 @@ async function getResponse() {
 	let key
 
 	for (key in content) {
-		list.innerHTML += `<div class="box">
+		list.innerHTML += `
+		<div class="box">
 						<div class="image">
 							<div class="img">
 								<img class="wrap" src="${content[key].avatar}" alt="" />
@@ -39,7 +40,8 @@ async function getResponse() {
 						</div>
 						<div class="text">
 							<h4>${content[key].name}</h4>
-							<h4><span>$${content[key].discount}</span> $${content[key].number}</h4>
+							<h4><span>$${content[key].number} </span> $${content[key].discount}</h4>
+							</div>
 						</div>
 					</div>`
 	}
