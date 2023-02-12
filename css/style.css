@@ -153,6 +153,11 @@ header.sticky {
 /*----------Product-------------*/
 .grid {
 	display: grid;
+	grid-gap: 30px;
+}
+
+.box-content {
+	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 30px;
 }
@@ -173,7 +178,7 @@ header.sticky {
 .overlay {
 	position: absolute;
 	bottom: 20%;
-	left: 15%;
+	left: 23%;
 	opacity: 0;
 	transition: 0.5;
 }
